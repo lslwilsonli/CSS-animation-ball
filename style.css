@@ -1,0 +1,141 @@
+* {
+  margin: 0;
+  box-sizing: border-box;
+}
+#runner {
+  display: none;
+  width: 300px;
+  position: relative;
+  /* animation: move-forward 2s; shorthand of above */
+  animation-name: move-forward;
+  animation-duration: 2s;
+  animation-timing-function: ease-out;
+  /* 
+  animation-timing-function: ease (default) 頭尾慢 中間快
+  linear: 全程平均
+  ease-in => start slow
+  ease-out => end slow
+  east-in-out == ease 
+  */
+  animation-iteration-count: 3;
+  /*number or infinite*/
+
+  animation-direction: alternate-reverse;
+  /*default => normal*/
+  /*reverse*/
+  /* alternate (梅花間竹咁行) */
+  /* alternate-reverse (梅花間竹咁行) */
+
+  animation-fill-mode: forwards;
+  /*forwards => stay on the last frame*/
+  /*backwards => stay on the first frame*/
+
+  /* animation: move-forward 2s ease-in-out infinite alternate-reverse forwards; */
+  /*
+  animation-name
+  animation-duration
+  animation-timing-function
+  animation-delay (delay幾多先開始)
+  animation-iteration-count
+  animation-direction
+  animation-fill-mode
+  animation-play-state 
+  */
+}
+
+@keyframes move-forward {
+  from /*0%*/ {
+    left: 0;
+    top: 0;
+    transform: scale(1) rotate(0deg);
+  }
+  to /*100%*/ {
+    left: 500px;
+    top: 300px;
+    transform: scale(1.2) rotate(30deg);
+  }
+}
+
+/* @-webkit-keyframes move-forward {
+  from {
+    left: 0;
+  } 
+  to {
+    left: 500px;
+  } 
+} */
+
+/*different prefix for different broswer*/
+/* webkit => Chrome / Safari / Edge */
+/* -o => Opera */
+/* -moz => Firefox*/
+/* -ms => Internet Explore */
+/* Chromium - Open Source Browser Framework */
+
+.ball-frame {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+#ball {
+  width: 150px;
+  animation: bounce 2s ease-in;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes bounce {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+
+  25% {
+    transform: translateY(200px) rotate(90deg) scaleX(1.02) scaleY(0.92);
+  }
+
+  50% {
+    transform: translateY(0px) rotate(180deg);
+  }
+
+  75% {
+    transform: translateY(200px) rotate(270deg);
+  }
+
+  100% {
+    transform: translateY(0px) rotate(360deg);
+    /* box-shadow: 0 2px 15px rgba(0, 0, 0, 0, 0.5); */
+  }
+}
+
+#shadow {
+  width: 150px;
+  height: 18px;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 50%;
+  position: relative;
+  top: 270px;
+  left: -150px;
+  z-index: -1;
+  animation: shadow-movement 2s ease-in;
+  animation-iteration-count: infinite;
+}
+
+@keyframes shadow-movement {
+  0% {
+    transform: scale(1);
+  }
+  25% {
+    transform: scale(0.7);
+  }
+  50% {
+    transform: scale(1);
+  }
+  75% {
+    transform: scale(0.7);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
